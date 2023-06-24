@@ -31,6 +31,13 @@ mod tests {
 
     #[test]
     fn larger_can_hold_smaller() {
+        let (larger, smaller) = get_larger_and_smaller();
+
+        assert!(larger.can_hold(&smaller));
+    }
+
+    fn get_larger_and_smaller() -> (Rectangle, Rectangle) {
+        
         let larger = Rectangle {
             width: 8,
             height: 7,
@@ -39,7 +46,12 @@ mod tests {
             width: 5,
             height: 1,
         };
+        return (larger, smaller);
+    }
 
-        assert!(larger.can_hold(&smaller));
+    #[test]
+    fn smaller_cannot_hold_larger() {
+        let (larger,smaller) = get_larger_and_smaller();
+        assert!(!smaller.can_hold(&larger));
     }
 }
